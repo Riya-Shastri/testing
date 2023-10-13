@@ -1,0 +1,79 @@
+<div class="blog-side">
+  <div>
+    <h5 class="blog-title">Popular categories</h5>
+    <div class="sidebar-container borders">
+      <ul class="sidebar-list">
+        <li class="d-flex" *ngFor="let cat of categories">
+          <a href="/article-list/{{ cat.title }}">
+            {{ cat.title }} ({{ cat.count }})</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h5 class="blog-title" *ngIf="loggedIn()">Recent Readings</h5>
+    <div class="sidebar-container">
+      <div>
+        <div class="blog-agency" *ngFor="let article of lastReadArticles">
+          <div class="blog-contain">
+            <img src="{{ article.frontPage }}" alt="" class="img-fluid" />
+            <div class="img-container center-content">
+              <div class="center-content">
+                <div class="blog-info">
+                  <div class="m-b-20">
+                    <div class="center-text">
+                      <span class="material-icons color-grey"> schedule </span
+                      >&nbsp;
+                      <h6 class="m-r-25 font-blog">
+                        {{ article.createdDate | date: "short" }}
+                      </h6>
+                      <h6 class="font-blog">{{ article.type }}</h6>
+                    </div>
+                  </div>
+                  <div class="btn-bottom m-t-20">
+                    <h5>
+                      <a
+                        [routerLink]="['/article-view/reader/articleReader',article.articleCode]"
+                        >{{ article.title }}</a
+                      >
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="sidebar-container">
+        <h5 class="blog-title">newsletter</h5>
+        <div class="newsletter text-center form">
+            <div class="form-group"><input type="text" class="form-control" placeholder="enter email">
+                <a href="#"> <i class="fa fa-paper-plane" aria-hidden="true"></i> </a></div>
+        </div>
+    </div> -->
+  <div>
+    <h5 class="blog-title">Popupar Topics</h5>
+    <div class="sidebar-container insta">
+      <ul class="blog-insta">
+        <li *ngFor="let subcat of subcategories">
+          <a href="/article-list/sub/{{ subcat.description }}">
+            <!-- <img
+              src="assets/images/agency/blog/2.jpg"
+              alt=""
+              class="img-fluid"
+            /> -->
+            <div
+              class="subcategory-card common-shadow"
+              [style.background-color]="subcat.color ? subcat.color : '#021546'"
+            >
+              <h4>{{ subcat.description }}</h4>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

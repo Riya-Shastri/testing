@@ -1,0 +1,51 @@
+.button-primary{
+  width:auto;
+  margin: 0 auto;
+}
+
+.button-primary a{
+  margin-right: 10px;
+}
+
+.set-count{
+  margin-bottom:40px;
+}
+
+.pricing.yoga .price-container, .pricing.saas2 .price-container{
+  filter: none !important; 
+    border-radius: 10px;
+    opacity: 0.9 !important;
+}
+
+.price-container{
+  -webkit-box-shadow: 2px 2px 40px 1px rgba(0,0,0,0.41); 
+box-shadow: 2px 2px 40px 1px rgba(0,0,0,0.41);
+}
+
+.pricing.saas2 .price-container .price-feature-container{
+  margin-top: 35px !important;
+}
+
+.hidden{
+  display: none;
+}
+
+.maintenance-sec .social ul li, .coming-soon .social ul li {
+  display: inline-block;
+  padding: 5px 8px;
+  margin-left: 10px;
+  /* background-color: #000; */
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  border: 1px solid #000;
+  margin-left: 5px;
+  background-color: rgb(240, 234, 234) !important;}
+
+  .social ul li img{
+    width:24px;
+    height:24px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:3px;
+  }

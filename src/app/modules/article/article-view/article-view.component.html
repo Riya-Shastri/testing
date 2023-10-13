@@ -1,0 +1,18 @@
+<router-outlet></router-outlet>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var options = {
+                modules: {
+                    toolbar: null
+                },
+            readOnly: true,
+            theme: 'snow',
+            setContents: this.content
+        };
+
+        var container = document.getElementById('editor-container');
+        var quill = new Quill(container, options);
+    });
+  
+</script>

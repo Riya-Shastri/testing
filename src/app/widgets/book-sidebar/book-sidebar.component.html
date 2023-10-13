@@ -1,0 +1,57 @@
+<div class="blog-side">
+  <div id="title-slide" [ngStyle]="floaterStyle">
+    <h5 class="blog-title">{{ articleName }}</h5>
+    <div class="sidebar-container borders">
+      <ul class="sidebar-list">
+        <li class="d-flex" *ngFor="let step of substeps || []; let i = index">
+          <a
+            class="nav-link"
+            href="{{ this.href }}#{{ step.id }}"
+            id="Step#{{ step.id }}"
+          >
+            <b
+              *ngIf="step.id === this.selectedStepId && articleType == 2"
+              (click)="emitSelectedId(i + 1)"
+            >
+              <span class="material-icons color-grey"> chevron_right </span
+              >{{ step.title }}
+              <div *ngFor="let page of step.pages">
+                <span>{{ page.pageNo }} - {{ page.summary }}</span>
+              </div>
+            </b>
+            <span
+              *ngIf="step.id != this.selectedStepId && articleType == 2"
+              (click)="emitSelectedId(i + 1)"
+            >
+              <span class="material-icons color-grey"> chevron_right </span
+              >{{ step.title }}
+            </span>
+            <b
+              *ngIf="articleType == 1 && boldStepId === step.id"
+              (click)="emitSelectedAnchor(step.id)"
+            >
+              <span class="material-icons color-grey"> chevron_right </span
+              >{{ step.title }}
+            </b>
+            <span
+              *ngIf="articleType == 1 && boldStepId != step.id"
+              (click)="emitSelectedAnchor(step.id)"
+            >
+              <span class="material-icons color-grey"> chevron_right </span
+              >{{ step.title }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="user-slide">
+      <h4 class="blog-title" *ngIf="userFirstname">
+        <img
+          src="{{ profileImage }}"
+          class="full-width img-responsive user-image"
+        />
+        <p class="text-center">{{ userFirstname + " " + userLastname }}</p>
+      </h4>
+    </div>
+  </div>
+</div>

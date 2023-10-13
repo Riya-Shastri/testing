@@ -1,0 +1,90 @@
+<form
+  [formGroup]="userSettingsForm"
+  (ngSubmit)="OnSubmit(userSettingsForm)"
+  class="full-width padset-md"
+>
+  <h2 class="text-black bottom-sm-marg">Update Basic Information</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="username"
+          required
+          placeholder="Username"
+        />
+        <span
+          class="error"
+          *ngIf="userSettingsForm.controls['email'].hasError('required')"
+          >username is required</span
+        >
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="email"
+          required
+          placeholder="Email"
+        />
+        <span
+          class="error"
+          *ngIf="userSettingsForm.controls['email'].hasError('required')"
+          >email is required</span
+        >
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <select
+          name="preferredLanguage"
+          id="preferredLanguage"
+          class="form-control full-button-blue form-control"
+          formControlName="preferredLanguage"
+          required
+          aria-placeholder="Select Language"
+          (change)="onLanguageChange($event?.target?.value)"
+        >
+          <!-- <option value="" disabled selected hidden>Choose Sub Category</option> -->
+          <option
+            *ngFor="let preferredLanguage of languages"
+            [value]="preferredLanguage.id"
+            type="text"
+          >
+            {{ preferredLanguage.value }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <ng-multiselect-dropdown
+          #multiSelect
+          formControlName="languages"
+          id="languages"
+          [placeholder]="'Select items'"
+          [data]="userLanguages"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelect)="onItemDeSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <button
+          class="btn btn-success"
+          (click)="OnSubmit(userSettingsForm)"
+          type="button"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

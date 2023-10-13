@@ -1,0 +1,329 @@
+<section>
+  <div class="collection-wrapper">
+    <div class="container">
+      <div class="row book-holder">
+        <div class="col-md-3">
+          <div
+            class="owl-item ng-tns-c18-2 ng-trigger ng-trigger-autoHeight ng-star-inserted cloned"
+          >
+            <img
+              alt=""
+              class="img-fluid ng-star-inserted"
+              src="{{ article?.frontPage }}"
+              style=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-right product-description-box">
+            <h2 class="m-b-20 m-t-20">{{ article?.title }}</h2>
+            <h6 class="color-grey">
+              Author: {{ article?.firstName + " " + article?.lastName }}
+            </h6>
+            <div class="border-product">
+              <h6 class="product-title mb-2">share it</h6>
+              <div class="product-icon">
+                <ul class="product-social">
+                  <li>
+                    <a href="https://www.facebook.com/"
+                      ><span class="material-icons"
+                        ><img
+                          src="/assets/images/icon/facebook-app-symbol.png" /></span
+                    ></a>
+                  </li>
+                  <li>
+                    <a (click)="shareOffsite('Linkedin')"
+                      ><span class="material-icons"
+                        ><img src="/assets/images/icon/linkedin.png" /></span
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/"
+                      ><span class="material-icons"
+                        ><img src="/assets/images/icon/twitter.png" /></span
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/"
+                      ><span class="material-icons"
+                        ><img src="/assets/images/icon/instagram.png" /></span
+                    ></a>
+                  </li>
+                </ul>
+                <div
+                  class="d-inline-block ng-star-inserted favourite-btn pull-right"
+                >
+                  <!-- <button class="btn btn-light color-white">
+                    <span class="material-icons pull-left">auto_awesome</span
+                    ><span>&nbsp;Add to Favourites</span>
+                  </button> -->
+                </div>
+              </div>
+            </div>
+            <div class="row product-accordion">
+              <div class="col-sm-12">
+                <ngb-accordion
+                  role="tablist"
+                  activeids="static-1"
+                  class="accordion faq"
+                  ng-reflect-active-ids="static-1"
+                  ng-reflect-close-other-panels="true"
+                  aria-multiselectable="false"
+                >
+                  <div class="card ng-star-inserted">
+                    <div role="tab" class="card-header" id="static-1-header">
+                      <button
+                        type="button"
+                        class="btn btn-link ng-star-inserted"
+                        ng-reflect-ngb-panel-toggle="[object Object]"
+                        aria-expanded="true"
+                        aria-controls="static-1"
+                      >
+                        <!-- <div
+                          data-toggle="collapse"
+                          data-target="#collapse1"
+                          aria-expanded="false"
+                          class="collapsed ng-star-inserted"
+                        >
+                          Product Description
+                        </div> -->
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      class="collapse show ng-star-inserted"
+                      id="static-1"
+                      aria-labelledby="static-1-header"
+                    >
+                      <div class="card-body">
+                        <p class="ng-star-inserted">
+                          {{ article?.description }}
+                        </p>
+                        <div
+                          class="single-product-tables detail-section ng-star-inserted"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </ngb-accordion>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="product-right card">
+            <h4>
+              <del>{{
+                article?.minPrice * 0.3 + article?.minPrice | currency: "AUD"
+              }}</del
+              ><span>{{ article?.minPrice | currency: "AUD" }}</span>
+            </h4>
+            <h3>{{ article?.minPrice | currency: "AUD" }}</h3>
+            <div class="product-description border-product">
+              <div class="ng-star-inserted"></div>
+              <h6 class="product-title">quantity</h6>
+              <div class="qty-box">
+                <quantity-input
+                  color="#004aad"
+                  name="cartQuantity"
+                  id="cartQuantity"
+                  [(ngModel)]="cartQuantity"
+                ></quantity-input>
+              </div>
+            </div>
+            <div class="ng-star-inserted">
+              <a
+                class="btn btn-default primary-btn radius-0"
+                (click)="addToCart()"
+                >add to cart</a
+              >
+              <a
+                [routerLink]="['/article-view/reader/bookReader/',articleId ]"
+                class="btn btn-default primary-btn radius-0"
+                >Read this book</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Nav tabs -->
+          <div class="card">
+            <div class="card-header">
+              <ul class="nav nav-tabs justify-content-center" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    data-toggle="tab"
+                    href="#comments"
+                    role="tab"
+                  >
+                    <i class="now-ui-icons objects_umbrella-13"></i> Comments
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                  >
+                    <i class="now-ui-icons shopping_cart-simple"></i> Analytics
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="tab"
+                    href="#messages"
+                    role="tab"
+                  >
+                    <i class="now-ui-icons shopping_shop"></i> Reviews
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="tab"
+                    href="#settings"
+                    role="tab"
+                  >
+                    <i class="now-ui-icons ui-2_settings-90"></i> About Author
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <!-- Tab panes -->
+              <div class="tab-content text-center">
+                <div class="tab-pane active" id="comments" role="tabpanel">
+                  <div class="quote_2 comment_form_sec">
+                    <div class="container">
+                      <row>
+                        <div class="comment-list blog_comment">
+                          <div
+                            class="comment_sec"
+                            *ngFor="let data of comments"
+                          >
+                            <article class="row">
+                              <div class="" [ngClass]="'col-12'">
+                                <div class="blog_center" [ngClass]="''">
+                                  <div>
+                                    <figure class="thumbnail">
+                                      <img [src]="data.profileImage" alt="" />
+                                    </figure>
+                                  </div>
+                                  <div class="blog_user arrow left">
+                                    <div class="panel-body">
+                                      <div class="text-left">
+                                        <div class="comment-user">
+                                          <h6>
+                                            {{
+                                              data.firstName +
+                                                " " +
+                                                data.lastName
+                                            }}
+                                          </h6>
+                                          <div class="comment-date">
+                                            <span
+                                              class="material-icons color-grey"
+                                            >
+                                              schedule
+                                            </span>
+                                            <h6>
+                                              {{
+                                                data.createdDate | date: "short"
+                                              }}
+                                            </h6>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="comment-post">
+                                        <p>
+                                          {{ data.content }}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </row>
+                      <div class="row">
+                        <div class="col-12 quote_form">
+                          <hr />
+                          <form
+                            [formGroup]="commentForm"
+                            (ngSubmit)="OnSubmit(commentForm)"
+                          >
+                            <div class="form-row">
+                              <div class="form-group col-md-12">
+                                <label for="exampleTextarea">Comment :</label>
+                                <textarea
+                                  formControlName="comment"
+                                  required
+                                  class="form-control msg_coment"
+                                  id="comment"
+                                  rows="3"
+                                  placeholder="Leave a Comment"
+                                  required=""
+                                ></textarea>
+                              </div>
+                            </div>
+                            <a
+                              class="btn btn-default primary-btn m-t-20 radius-0"
+                              type="button"
+                              (click)="OnSubmit($event)"
+                            >
+                              Post Comment
+                              <span class="con_btn_eff"></span>
+                            </a>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="profile" role="tabpanel">
+                  <p>
+                    I will be the leader of a company that ends up being worth
+                    billions of dollars, because I got the answers. I understand
+                    culture. I am the nucleus. I think that’s a responsibility
+                    that I have, to push possibilities, to show people, this is
+                    the level that things could be at. I think that’s a
+                    responsibility that I have, to push possibilities, to show
+                    people, this is the level that things could be at.
+                  </p>
+                </div>
+                <div class="tab-pane" id="messages" role="tabpanel">
+                  <p>
+                    I think that’s a responsibility that I have, to push
+                    possibilities, to show people, this is the level that things
+                    could be at. So when you get something that has the name
+                    Kanye West on it, it’s supposed to be pushing the furthest
+                    possibilities. I will be the leader of a company that ends
+                    up being worth billions of dollars, because I got the
+                    answers. I understand culture. I am the nucleus.
+                  </p>
+                </div>
+                <div class="tab-pane" id="settings" role="tabpanel">
+                  <p>
+                    "I will be the leader of a company that ends up being worth
+                    billions of dollars, because I got the answers. I understand
+                    culture. I am the nucleus. I think that’s a responsibility
+                    that I have, to push possibilities, to show people, this is
+                    the level that things could be at."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

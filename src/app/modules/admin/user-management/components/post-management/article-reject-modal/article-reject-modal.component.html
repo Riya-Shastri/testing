@@ -1,0 +1,19 @@
+<form [formGroup]="rejectionForm" (ngSubmit)="OnSubmit(rejectionForm)" class="full-width middle-form-bordered">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <textarea type="text" class="form-control form-gigantic" formControlName="rejectionSuggestions" required
+                    placeholder="Title"></textarea>
+                    <span class="error" *ngIf="rejectionForm.controls['rejectionSuggestions'].hasError('required')">Suggestion note is required!</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 top-md-marg">
+            <div class="form-group">
+                <button type="submit" class="button-bordered-blue button full-width" [disabled]="!rejectionForm.valid">
+                    Reject </button>
+            </div>
+        </div>
+    </div>
+  </form>

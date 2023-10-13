@@ -1,0 +1,57 @@
+<section class="agency blog blog-sec">
+  <div class="container no-side">
+    <div class="row full-width user-card">
+      <div class="display">
+        <div class="col-xl-4 col-md-6 margin-bottom-xs" *ngFor="let user of users">
+          <div class="card anabelle  animate__animated animate__fadeInUp">
+            <div class="card-top" [ngStyle]= "{'background-image': 'url(' + user.coverImage + ')'}"></div>
+            <div class="card-profile">
+              <div class="profile-image" [ngStyle]= "{'background-image': 'url(' + user.profileImage + ')'}">
+              </div>
+            </div>
+            <div class="card-info">
+              <div class="info-title">
+                <h2>{{user.firstName+" "+user.lastName}}</h2>
+                <h3>{{user.job}}</h3>
+              </div>
+              <div class="info-follow">
+                <div class="follow-followers">
+                  <span>72</span><br />
+                  <span>Followers</span>
+                </div>
+                <div class="follow-following">
+                  <span>12</span><br />
+                  <span>Following</span>
+                </div>
+                <div class="follow-likes">
+                  <span>958</span><br />
+                  <span>Likes</span>
+                </div>
+              </div>
+              <div class="info-bio">
+                {{user.description}}
+              </div>
+              <div class="info-social">
+                <div class="social-icons">
+                  <div class="sm twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </div>
+                  <div class="sm facebook">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </div>
+                  <div class="sm pint">
+                    <i class="fa fa-pinterest" aria-hidden="true"></i>
+                  </div>
+                  <div class="sm px500">
+                    <i class="fa fa-500px" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

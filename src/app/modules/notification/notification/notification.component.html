@@ -1,0 +1,19 @@
+<section class="agency blog blog-sec">
+  <div class="container no-side">
+    <div class="row user-card">
+      <div class="col-md-12" *ngFor="let item of notifications">
+        <div class="card-two common-shadow"> <a [routerLink]="[item.url]" class="decoration-none"
+            routerLinkActive="router-link-active">
+            <div class="notification-image"><img [src]="item.userProfile" alt="user-image" width="50px"></div>
+            <div class="notification-info">
+              <p class="font-dark-grey fonts-bold">
+                {{item.description}}
+              </p>
+              <p>{{item.createdOn | date:'short' }}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

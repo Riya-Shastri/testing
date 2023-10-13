@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<app-nav></app-nav>
+
+<body>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <nav class="col-md-2 d-none d-md-block sidebar sidebar-main common-shadow custom-scroll-one color-black"
+    [ngStyle]="{ width : sidebarWidth}">
+
+    <div class="sidebar-sticky">
+      
+      <span class="close-button" [ngStyle]="closeButtonStyle" (click)="changeWidth($event)"><img
+          src="../assets/images/UI/menu.svg" alt="menu" height="10" width="10" /></span>
+      <ul class="nav flex-column">
+
+        <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>{{articleName}}</span>
+        </h5>
+        <li class="nav-item" *ngFor="let step of (substeps || []); let i = index">
+          <a class="nav-link" href="{{this.href}}#{{step.id}}" id="Step#{{step.id}}" (click)="makeBold('Step#'+step.id)">
+            <b *ngIf="step.id === this.selectedStepId && articleType==2" (click)="emitSelectedId(i+1)">
+              {{step.title}}
+            </b>
+            <span *ngIf="step.id != this.selectedStepId && articleType==2 " (click)="emitSelectedId(i+1)">
+              {{step.title}}
+            </span>
+            <b *ngIf="step.id === this.selectedStepId && articleType==1" (click)="emitSelectedAnchor(step.id)">
+              {{step.title}}
+            </b>
+            <span *ngIf="step.id != this.selectedStepId && articleType==1 " (click)="emitSelectedAnchor(step.id)">
+              {{step.title}}
+            </span>
+          </a>
+        </li>
+        <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Bookmarks</span>
+        </h5>
+        <li class="nav-item" *ngFor="let step of (steps || [])">
+          <div *ngFor="let bookmark of (step.highlights || [])">
+            <a class="nav-link" href="{{this.href}}#{{step.id}}">
+              {{bookmark.highlightedPart}}
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+
+        </li>
+        <li class="nav-item">
+
+        </li>
+        <li class="nav-item">
+
+        </li>
+        <li class="nav-item">
+
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section class="margin-common-top">
+    <div class="col-md-12 article-cover-section" *ngIf="!isLoading && articleType === 1 && frontPage"
+      [ngStyle]="{'background-image': 'url(' + frontPage + ')'}">
+      <p class="heading-title">{{articleName}}</p>
+    </div>
+    <div class="loading-cover-article common-loading" *ngIf="isLoading && articleType === 1" >
+
+    </div>
+    <div class="col-md-12 article-cover-section" *ngIf="!isLoading && articleType === 1 && !frontPage"
+      [ngStyle]="{'background-image': 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg)'}">
+      <p class="heading-title">{{articleName}}</p>
+    </div>
+    <div class="wrapper-reader">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+  <nav class="col-md-2 d-none d-md-block sidebar-right custom-scroll-one color-black">
+
+    <div class="sidebar-sticky">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="full-width">
+            <div class="row padding-md-sides">
+              <div class="padding-sm border-gray radius-sm padset-top-md full-width">
+                <div class="col-xs-4 width-trinity" (click)="addArticleComment()">
+                  <div class="centered-block"><img src="../../../assets/images/UI/comment.svg" width="20px"
+                      class="centered-block">
+                    <p class="text-center">{{commentCount}}</p>
+                  </div>
+                </div>
+                <div class="col-xs-4 width-trinity">
+                  <div class="centered-block"><img src="../../../assets/images/UI/eye.svg" width="20px"
+                      class="centered-block">
+                    <p class="text-center">289</p>
+                  </div>
+                </div>
+                <div class="col-xs-4 width-trinity" *ngIf="isLoggedIn && !isSameUser" (click)="saveArticle()">
+                  <div class="centered-block"><img class="cursor-pointer" *ngIf="!isArticleSaved" src="../../../assets/images/UI/ribbon.svg" width="20px"
+                      class="centered-block">
+                      <img *ngIf="isArticleSaved" src="../../../assets/images/UI/ribbon-black.svg" width="20px"
+                      class="centered-block">
+                    <p class="text-center">Save</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padset-top-md">
+
+      </div>
+    </div>
+  </nav>
+  <div class="absolute-floater common-shadow padset-sm"  [ngStyle]="floaterStyle">
+    <h4 class="color-blue">{{articleName}}</h4>
+    <div class="sidebar-profile-image"><img src="{{this.profileImage}}" class="user-icon-lg" /></div>
+    <p class="fonts-md"><a href="/user/{{this.userId}}"><b>{{userFirstname}} &nbsp;{{userLastname}}</b></a></p>
+  </div>
+</body>
+
+</html>

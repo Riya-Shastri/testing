@@ -1,0 +1,32 @@
+<ngb-modal-window
+  role="dialog"
+  tabindex="-1"
+  aria-modal="true"
+  class="d-block modal fade show"
+  ><div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="login-modal">
+        <div class="modal-header">
+          <button
+            aria-label="Close"
+            data-dismiss="modal"
+            type="button"
+            class="close"
+          >
+            <span aria-hidden="true" (click)="close()">×</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="col-md-12">
+            <h6 class="bottom-sm-marg">Upload your new profile image</h6>
+          </div>
+          <div class="col-md-12">
+            <app-photo-uploader
+              (setProfileImage)="getProfileImage($event)"
+              [userForProfile]="user"
+            ></app-photo-uploader>
+          </div>
+        </div>
+      </div>
+    </div></div
+></ngb-modal-window>

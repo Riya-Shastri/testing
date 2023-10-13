@@ -1,0 +1,37 @@
+<section class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>Enter Reset code</h3>
+        <div class="theme-card">
+          <form
+            class="theme-form"
+            [formGroup]="codeForm"
+            (ngSubmit)="OnSubmit(codeForm)"
+          >
+            <div class="form-group">
+              <label for="username">Reset code</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="code"
+                autocomplete="off"
+                id="code"
+                placeholder="Enter code"
+                required=""
+              />
+            </div>
+
+            <a
+              class="primary-btn btn-default radius-0"
+              type="submit"
+              (click)="OnSubmit(codeForm)"
+              >Reset</a
+            >
+            <p class="custom-link">or <a [routerLink]="['/login']">login</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

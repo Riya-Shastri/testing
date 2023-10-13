@@ -1,0 +1,124 @@
+<!-- <section class="agency blog blog-sec">
+  <div class="container no-side">
+    <div class="row full-width">
+      <section class="user-profile-home padset-bottom-md padset-md" [ngStyle]="{'background-image': 'url(' + this.user?.coverImage + ')'}">
+        <span *ngIf="isSameUser" class="cover-upload-btn hover-visible" (click)="openCoverUploadModal()">Change Cover</span>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+    
+        </div>
+    
+      </section>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="user-name-panel">
+            <div class="user-icon-large"><span *ngIf="isSameUser" class="photo-upload-btn hover-visible" (click)="openPhotoUploadModal()">Add photo</span>
+              <img *ngIf="user?.profileImage == null" src="../../../../assets/images/UI/user-profile.png"  class="img-responsive" />
+              <img *ngIf="user?.profileImage != null" src="{{user?.profileImage}}" class="img-responsive" />
+            </div>
+            <div class="user-title">
+              <h3 class="main-title">{{user?.firstName}}&nbsp;{{user?.lastName}}</h3>
+              <p *ngIf="user?.job != null && user.job != ''" class="job-title">{{user?.job}}</p>
+              <p *ngIf="user?.job == null || user.job == ''" class="job-title">Textuto Author</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <a routerLink="/user/{{this.userId}}/settings/general" *ngIf="!isSameUser && !isFollowed" (click)="followUser()" class="btn btn-light user-profile-buttons">Follow</a>
+          <a routerLink="/user/{{this.userId}}/settings/general" *ngIf="!isSameUser && isFollowed" (click)="unFollowUser()" class="btn btn-light user-profile-buttons">Unfollow</a>
+          <a routerLink="/user/{{this.userId}}/settings/general" class="btn btn-light user-profile-buttons">Rate this Author</a>
+        </div> -->
+<!-- <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-3 padset-top-sm">
+              <div class="panel-card-shadowed">
+                <div class="rating-box centered-box">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <h2 class="text-center color-blue">4.3</h2>
+              </div>
+            </div>
+            <div class="col-md-3 padset-top-sm">
+              <div class="panel-card-shadowed">
+                <h1 class="text-center">5</h1>
+                <h2 class="text-center color-blue">Books</h2>
+              </div>
+            </div>
+            <div class="col-md-3 padset-top-sm">
+              <div class="panel-card-shadowed">
+                <h1 class="text-center">40</h1>
+                <h2 class="text-center color-blue">Articles</h2>
+              </div>
+            </div>
+            <div class="col-md-3 padset-top-sm">
+              <div class="panel-card-shadowed">
+                <h1 class="text-center">1.5K</h1>
+                <h2 class="text-center color-blue">Reads</h2>
+              </div>
+            </div>
+          </div>
+        </div> -->
+<!-- </div> -->
+<!-- <div class="row">
+        <div class="col-md-2">
+          <div class="panel-card-shadowed cancel-padding">
+            <div class="vertical-menu">
+              <a *ngIf="isSameUser"  routerLink="/user/{{this.userId}}/settings/activities">Activities</a>
+              <a routerLink="/user/{{this.userId}}/settings/content/{{this.userId}}">Articles & Books</a>
+              <a  routerLink="/user/{{this.userId}}/settings/followers">Followers</a>
+              <a  routerLink="/user/{{this.userId}}/settings/followers">Following</a>
+              <a  *ngIf="isSameUser"  routerLink="/user/{{this.userId}}/settings/settings/{{this.userId}}">Settings</a>
+              <a  *ngIf="isSameUser"  routerLink="/user/{{this.userId}}/settings/general">History</a>
+              <a  *ngIf="isSameUser"  routerLink="/user/{{this.userId}}/settings/purchases/{{this.userId}}">Purchase History</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="panel-card-shadowed">
+              <router-outlet></router-outlet>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel-card-shadowed">
+            <div class="full-width">
+              <p class="text-center fonts-bold padset-top-sm">Unleash your creativity!</p>
+              <a class="btn btn-light text-center full-width" [routerLink]="['/article']" >Let's Write!</a>
+            </div>
+          </div>
+          <div class="panel-card-shadowed top-sm-marg">
+            <div class="full-width">
+              <p class="text-center fonts-bold padset-top-sm">Unleash your creativity!</p>
+              <a class="btn btn-light text-center full-width" [routerLink]="['/article']" >Let's Write!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row data-section">
+        <div class="col-md-12">
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="agency blog blog-sec">
+  <div class="container no-side">
+    <div class="row">
+      <div class="col-lg-3">
+        <app-user-sidebar
+          [user]="user"
+          [lastReadArticles]="lastReadArticles"
+        ></app-user-sidebar>
+      </div>
+      <div class="col-lg-9 content-block">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12" *ngFor="let order of orders">
+    <div class="card-two common-shadow">
+      <div class="purchase-card">
+        <div class="row">
+          <div class="col-md-3" *ngFor="let book of order?.productInfo">
+
+            <div class="book-on-shelf">
+
+              <div class="book-cover">
+                <img class="img-responsive full-width book-card"
+                  src="{{(book?.product?.frontPage) ? book.product.frontPage : 'https://images.squarespace-cdn.com/content/56030e34e4b00e89f63a727a/1492603613395-2RWQGTF1CHCYN6A3WNWQ/14document-custom2.jpg'}}"
+                  alt="Bologna">
+              </div>
+              <div class="block-book-info">
+
+                <p>#{{book?.product?.id}}<br/>
+                <a
+                    [routerLink]="['/article-info',book?.product?.id]">{{book?.product?.title}}</a>
+                    {{book?.product?.firstName}}&nbsp;{{book?.product?.lastName}}
+                    <br/>
+                Price: ${{book?.product?.minPrice ? book?.product?.minPrice : 0}}<br/>
+                Quantity: {{book?.quantity}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class=" common-shadow card-two">
+                <h2 class="color-black">Total Amount: ${{order.totalAmount}}</h2>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

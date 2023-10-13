@@ -1,0 +1,11 @@
+<body>
+  <div *ngIf="backgroundurl && backgroundurl != null">
+    <div
+      class="backgroun-cover"
+      [style.background-image]="'url(' + backgroundurl + ')'"
+      [ngStyle]="{ height: heightCalcualted + 'px' }"
+    ></div>
+  </div>
+  <!-- <h1 (click)="openCoverUploadModal()">Upload cover image</h1> -->
+  <router-outlet></router-outlet>
+</body>

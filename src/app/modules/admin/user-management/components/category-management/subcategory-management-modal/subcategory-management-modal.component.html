@@ -1,0 +1,52 @@
+<div class="custom-modal">
+    <form [formGroup]="subcategoryForm" (ngSubmit)="OnSubmit(subcategoryForm)" class="full-width middle-form-bordered">
+
+      <div class="form-group full-width">
+        <div class="row">
+          <div class="col-md-12">
+            <app-photo-uploader *ngIf="subCategory" (setCoverImage)='getFrontPage($event)' [parentFormData]='subcategoryForm'
+              [subCategory]=subCategory></app-photo-uploader>
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="description" required placeholder="Title">
+            <span class="error" *ngIf="subcategoryForm.controls['description'].hasError('required')">Title is
+              required</span>
+          </div>
+
+          <div class="col-md-4">
+            <ngx-colors ngx-colors-trigger style="display: inline-block; margin:5px;"   formControlName="color"></ngx-colors>
+            <span class="error" *ngIf="subcategoryForm.controls['color'].hasError('required')">Please select a
+              color</span>
+          </div>
+          <div class="col-md-4">
+            <select name="categoryId" id="categoryId" class="form-control  full-button-blue
+        form-control" formControlName="categoryId" required placeholder="Category"
+              (change)="onCategoryChange($event.target.value)">
+              <option value="" disabled selected hidden>Choose Category</option>
+              <option *ngFor="let category of categories" [value]="category.id" (click)="onCategoryChange(category.id)"
+                type="number">{{ category.description }}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+
+            <select name="imageType" id="imageType" class="form-control  full-button-blue
+        form-control" formControlName="imageType" required placeholder="Cover Type">
+              <option value="" disabled selected hidden>Choose Cover Type</option>
+              <option [value]="1">Fiction</option>
+              <option [value]="2">Article</option>
+              <option [value]="3">Children</option>
+              <option [value]="4">Novel</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 top-md-marg">
+          <div class="form-group">
+            <button type="submit" class="btn primary-btn btn-default radius-0" [disabled]="!subcategoryForm.valid">
+              Add </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,21 @@
+.user-image{
+    width:50%;
+    display: block;
+    margin-left: auto;
+    border-radius: 50%;
+    margin-right: auto;
+    margin-bottom:20px;
+}
+
+@media only screen and (max-width: 1720px) {
+    #title-slide{
+        width: 270px !important;
+    }
+  }
+
+
+@media only screen and (max-width: 1000px) {
+    #title-slide{
+        display: none;
+    }
+  }

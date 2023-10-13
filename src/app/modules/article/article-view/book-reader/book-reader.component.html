@@ -1,0 +1,119 @@
+<!-- <section class="article-view">
+    
+  <div class="row">
+      <div class="col-md-12">
+          
+        <span *ngIf="currentUser == 2 || currentUser == userId" class="marg-top-md pull-right">
+            <a  class="btn btn-light pull-right" (click)="deleteArticle()" routerLinkActive="router-link-active"  >Delete</a>
+          </span>
+          <div class="content" *ngFor="let step of steps">
+              <h3 class="padset-md text-center" id="#{{step.id}}">{{step.title}}</h3>
+              <div #editor id="editor-container" (click)="handleClick($event)">
+                  <div class="ql-container ql-snow">
+                      <div class="ql-editor" innerHTML="{{this.content}}"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+          <div class="row top-xs-marg">
+              <div class="col-md-4">
+                  <p class="top-xxs-marg fonts-bold">Episode {{pageNo + '/' + totalRowCount}}</p>
+              </div>
+              <div class="col-md-4">
+                  <div class="centered-block">
+                      <div class="marg-top-md">
+                          <button [disabled]="!isPrevious" class="btn btn-light pull-left" (click)="previousStep()">Previous</button>
+                          <button [disabled]="!isNext" class="btn btn-light pull-right" (click)="NextStep()">Next</button></div>
+                  </div>
+              </div>
+             
+              <div class="col-md-4">
+                  <div *ngIf="isSameUser" class="marg-top-md pull-right">
+                      <a  class="btn btn-light pull-right" [routerLink]="['/step-edit',articleId]" routerLinkActive="router-link-active"  >Edit</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> -->
+<!-- <app-reader-layout [steps]="stepsForNav" [article]="articleForNav">
+  </app-reader-layout> -->
+<!-- </section> -->
+
+<section class="agency blog-sec blog-sidebar single_blog_item">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 order-lg-2">
+        <div class="blog-block">
+          <div class="blog-box"></div>
+        </div>
+        <div class="blog-text m-t-20">
+          <h6>{{ article?.createdDate | date: "medium" }}</h6>
+          <a href="#">
+            <h3 class="blog-head">{{ article?.title }}</h3>
+          </a>
+          <div class="blog-divider"></div>
+          <div class="blog-description">
+            <div class="col-md-12" #editorContainer>
+              <div
+                #editor
+                id="editor-container common-shadow"
+                (click)="handleClick($event)"
+              >
+                <div
+                  class="ql-container ql-snow common-shadow"
+                  class="marg-top-md"
+                >
+                  <div class="ql-editor" innerHTML="{{ this.content }}"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row top-xs-marg">
+            <div class="col-md-4">
+              <p class="top-xxs-marg fonts-bold">
+                Episode {{ pageNo + "/" + totalRowCount }}
+              </p>
+            </div>
+            <div class="col-md-4">
+              <div class="centered-block">
+                <div class="marg-top-md">
+                  <button
+                    [disabled]="!isPrevious"
+                    class="btn btn-light pull-left"
+                    (click)="previousStep()"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    [disabled]="!isNext"
+                    class="btn btn-light pull-right"
+                    (click)="NextStep()"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div *ngIf="isSameUser" class="marg-top-md pull-right">
+                <a
+                  class="btn btn-light pull-right"
+                  [routerLink]="['/step-edit', articleId]"
+                  routerLinkActive="router-link-active"
+                  >Edit</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <app-book-sidebar></app-book-sidebar>
+      </div>
+    </div>
+  </div>
+</section>

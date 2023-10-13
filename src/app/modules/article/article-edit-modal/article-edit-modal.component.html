@@ -1,0 +1,97 @@
+<div class="blog-agency blog-contain">
+  <div class="container">
+
+    <form [formGroup]="articleForm" (ngSubmit)="OnSubmit()" class="full-width card-two common-shadow padset-top-lg">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <input type="text" class="form-control form-gigantic" formControlName="title" required placeholder="Title">
+            <span class="error" *ngIf="articleForm.controls['title'].hasError('required')">Title is required</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="book-on-shelf">
+            <div class="book-cover">
+              <app-photo-uploader (setFrontPage)='getFrontPage($event)' [parentFormData]='articleForm'
+                [article]=article></app-photo-uploader>
+            </div>
+            <div class="block-book-info">
+              <p class="bold-md-font cancel-margin-bottom"><a
+                  [routerLink]="['/article-info',article.id]">{{article.title}}</a></p>
+              <p><span class="bold-md-font color-dark-grey"></span>{{article.firstName}}&nbsp;{{article.lastName}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <textarea type="textarea" class="form-control" formControlName="description" required
+              placeholder="description"></textarea>
+            <span class="error" *ngIf="articleForm.controls['description'].hasError('required')">Description is
+              required</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <p>Category</p>
+          <select name="category" id="category" class="form-control  full-button-blue
+          form-control" formControlName="category" required placeholder="Category"
+            (change)="onCategoryChange($event.target.value)">
+            <!-- <option value="" disabled selected hidden>Choose Category</option> -->
+            <option *ngFor="let category of categories" [value]="category.id" (click)="onCategoryChange(category.id)"
+              type="number">{{ category.description }}</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <p>Sub Category</p>
+          <select name="subcategory" id="subcategory" class="form-control  full-button-blue
+          form-control" formControlName="subCategory" required aria-placeholder="Select Sub Category"
+            (change)="onSubCategoryChange($event.target.value)">
+            <!-- <option value="" disabled selected hidden>Choose Sub Category</option> -->
+            <option *ngFor="let subcategory of subCategories" [value]="subcategory.id" type="number">
+              {{subcategory.description}}
+            </option>
+          </select>
+          <span class="error" *ngIf="articleForm.controls['subCategory'].hasError('required')">Sub category is
+            required</span>
+        </div>
+        <div class="col-md-4">
+
+          <p>Type</p>
+          <select name="articleType" id="articleType" class="form-control  full-button-blue
+          form-control" formControlName="articleType" required placeholder="Alert Type"
+            (change)="onArticleTypeChange($event.target.value)">
+            <option *ngIf="article.articleType == 2" [value]="2" selected>Book</option>
+            <option *ngIf="article.articleType == 1" [value]="1" selected>Article</option>
+          </select>
+          <span class="error" *ngIf="articleForm.controls['articleType'].hasError('required')">Article type is
+            required</span>
+        </div>
+      </div>
+      <div class="row padset-top-sm" *ngIf="article.articleType == 2">
+        <div class="col-md-4">
+          <div class="form-group">
+            <p>Minimum Price</p>
+            <input type="text" class="form-control form-gigantic" formControlName="minPrice" placeholder="Price">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 top-md-marg">
+          <div class="form-group">
+            <button type="submit" class="button-bordered-blue button full-width" [disabled]="!articleForm.valid">
+              Edit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <app-multistep-article  class="multi-step-form"
+[formContent]="formContent"
+(formSubmit)="onFormSubmit($event)"></app-multistep-article> -->

@@ -1,0 +1,51 @@
+<div class="cart_section">
+  <div class="wrap cf">
+    <div class="heading cf">
+      <h1>Linfolk Cart</h1>
+      <a href="#" class="continue">Continue Shopping</a>
+    </div>
+    <div class="cart">
+      <ul class="cartWrap">
+        <li class="items odd" *ngFor="let item of cart?.cartItems">
+
+          <div class="infoWrap">
+            <div class="cartSection">
+              <img src="{{item.product?.frontPage}}" alt="" class="itemImg" />
+              <p class="itemNumber">#{{item.product.id}}</p>
+              <h3>{{item.product.title}}</h3>
+
+              <p> <input type="text" class="qty" placeholder="{{item.quantity}}" /> x ${{item.price}}</p>
+
+              <p class="stockStatus"> In Stock</p>
+            </div>
+
+
+            <div class="prodTotal cartSection">
+              <p>${{item.price * item.quantity}}</p>
+            </div>
+            <div class="cartSection removeWrap">
+              <a class="remove" (click)="removeFromCart(item.id)">x</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="subtotal cf">
+      <ul>
+        <li class="totalRow"><span class="label">Subtotal</span><span class="value">${{cart?.totalAmount}}</span></li>
+
+        <li class="totalRow"><span class="label">Shipping</span><span class="value">${{cart?.totalAmount * 0.01}}</span>
+        </li>
+
+        <li class="totalRow final"><span class="label">Total</span><span
+            class="value">${{cart?.totalAmount + (cart?.totalAmount * 0.01) }}</span></li>
+        <!-- <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li> -->
+        <div id="paypal-checkout-button"></div>
+        <li> 
+          <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

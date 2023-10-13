@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Username</th>
+        <th scope="col">Joined Date</th>
+        <th scope="col">Roles</th>
+        <th scope="col">Is Enabled</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.joinedDate}}</td>
+        <td>{{user.userRoles}}</td>
+        <td>Enabled</td>
+        <td><button class="btn btn-info" (click)="editUser(user)">Edit Roles</button></td>
+      </tr>
+    </tbody>
+  </table>

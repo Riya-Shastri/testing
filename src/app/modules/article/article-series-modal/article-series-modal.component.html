@@ -1,0 +1,43 @@
+<div class="blog-agency blog-contain">
+  <div class="container">
+    <form
+      [formGroup]="articleSeriesForm"
+      (ngSubmit)="OnSubmit()"
+      class="full-width card-two common-shadow padset-top-lg"
+    >
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control form-gigantic"
+              formControlName="seriesTitle"
+              required
+              placeholder="Title"
+            />
+            <span
+              class="error"
+              *ngIf="
+                articleSeriesForm.controls['seriesTitle'].hasError('required')
+              "
+              >Title is required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 top-md-marg">
+          <div class="form-group">
+            <button
+              type="submit"
+              class="button-bordered-blue button full-width"
+              [disabled]="!articleSeriesForm.valid"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

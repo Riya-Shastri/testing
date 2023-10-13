@@ -1,0 +1,205 @@
+<!-- Nav Start-->
+<header class="ecommerce ecom-header">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav>
+          <a class="logo-erapper" (click)="goToHome()"
+            ><img
+              alt=""
+              class="img-fluid mid-max-width"
+              src="assets/images/Logo-white.png"
+          /></a>
+          <app-nav class="responsive-button-container"></app-nav>
+          <div class="top-header-right">
+            <ul class="user-bar">
+              <li class="search" *ngIf="loggedIn() && isRoleAdmin">
+                <a
+                  aria-expanded="false"
+                  data-toggle="dropdown"
+                  href="#"
+                  id="dropdownMenuButton3"
+                  (click)="clickNotifications()"
+                >
+                  <span class="material-icons"> notifications </span>
+                </a>
+                <span class="cart_qty_cls" *ngIf="notificationCount > 0">{{
+                  notificationCount
+                }}</span>
+                <div
+                  aria-labelledby="dropdownMenuButton3"
+                  class="dropdown-menu dropdown-menu-right"
+                  *ngIf="notifications.length > 0"
+                >
+                  <a class="dropdown-item dropdown-notify-icon">
+                    <div class="notifications" id="box">
+                      <div
+                        class="notifications-item"
+                        *ngFor="let item of notifications"
+                        (click)="readNotification(item.id)"
+                        [ngClass]="!item.status ? 'non-selected-item' : ''"
+                      >
+                        <div class="image">
+                          <img [src]="item.userProfile" alt="img" />
+                        </div>
+                        <div class="text">
+                          <h6>{{ item.user }}</h6>
+                          <p class="description">{{ item.description }}</p>
+                          <p class="small">{{ item.ago }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div
+                  aria-labelledby="dropdownMenuButton3"
+                  class="dropdown-menu dropdown-menu-right"
+                  *ngIf="notifications.length == 0"
+                >
+                  <a class="dropdown-item" href="#">
+                    No recent notifications for you
+                  </a>
+                </div>
+              </li>
+              <li class="account" *ngIf="loggedIn() && isRoleAdmin">
+                <a>
+                  <span class="material-icons" (click)="goToCart()">
+                    shopping_basket
+                  </span>
+                  <div class="notifications" id="box">
+                    <div
+                      class="notifications-item"
+                      *ngFor="let item of shoppingCartItems"
+                      (click)="readNotification(item.id)"
+                      [ngClass]="!item.status ? 'non-selected-item' : ''"
+                    >
+                      <div class="image">
+                        <img [src]="item.userProfile" alt="img" />
+                      </div>
+                      <div class="text">
+                        <h6>{{ item.user }}</h6>
+                        <p class="description">{{ item.description }}</p>
+                        <p class="small">{{ item.ago }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <span class="cart_qty_cls" *ngIf="cartItemCount > 0">{{
+                  cartItemCount
+                }}</span>
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  [class.show]="showItem"
+                >
+                  <ul class="shopping-cart" *ngIf="shoppingCartItems.length">
+                    <li *ngFor="let item of shoppingCartItems">
+                      <div class="media">
+                        <a [routerLink]="['/cart']"
+                          ><img
+                            class="mr-3"
+                            [src]="item.product.img"
+                            alt="Generic placeholder image"
+                        /></a>
+                        <div class="media-body">
+                          <a
+                            [routerLink]="[
+                              '/home/left-sidebar/product',
+                              item.product.id
+                            ]"
+                          >
+                            <h4>{{ item.product.name }}</h4>
+                          </a>
+                          <h4>
+                            <span
+                              >{{ item.quantity }} x
+                              {{
+                                item.product.price
+                                  | currency
+                                    : productService?.currency
+                                    : "symbol"
+                              }}</span
+                            >
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="close-circle">
+                        <a (click)="removeItem(item)"
+                          ><i class="fa fa-times" aria-hidden="true"></i
+                        ></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="total">
+                        <h5>
+                          subtotal :
+                          <span>{{
+                            getTotal()
+                              | async
+                              | currency : productService?.currency : "symbol"
+                          }}</span>
+                        </h5>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="buttons">
+                        <a [routerLink]="['/e-commerce/cart']" class="view-cart"
+                          >view cart</a
+                        >
+                        <a
+                          [routerLink]="['/e-commerce/checkout']"
+                          class="checkout"
+                          >checkout</a
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="account" *ngIf="loggedIn()">
+                <a
+                  aria-expanded="false"
+                  data-toggle="dropdown"
+                  href="#"
+                  id="dropdownMenuButton2"
+                >
+                  <span class="material-icons"> account_circle </span>
+                </a>
+                <div
+                  aria-labelledby="dropdownMenuButton2"
+                  class="dropdown-menu show dropdown-menu-right"
+                >
+                  <a
+                    class="dropdown-item"
+                    *ngIf="!loggedIn()"
+                    [routerLink]="['/login']"
+                    >Login</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    *ngIf="isRoleAdmin"
+                    [routerLink]="['/admin']"
+                    >Admin</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    *ngIf="loggedIn()"
+                    (click)="GoToProfile()"
+                    >Account</a
+                  >
+                  <a class="dropdown-item" *ngIf="loggedIn()" (click)="logout()"
+                    >Logout</a
+                  >
+                </div>
+              </li>
+              <li *ngIf="!loggedIn()" class="color-white">
+                <a [routerLink]="['/login']" class="view-cart">Sign In</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Nav end-->

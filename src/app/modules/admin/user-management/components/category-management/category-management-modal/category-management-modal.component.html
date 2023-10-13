@@ -1,0 +1,19 @@
+<form [formGroup]="categoryForm" (ngSubmit)="OnSubmit(categoryForm)" class="full-width middle-form-bordered">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="form-group">
+              <input type="text" class="form-control form-gigantic" formControlName="description" required
+                  placeholder="Title">
+                  <span class="error" *ngIf="categoryForm.controls['description'].hasError('required')">Title is required</span>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12 top-md-marg">
+          <div class="form-group">
+              <button type="submit" class="button-bordered-blue button full-width" [disabled]="!categoryForm.valid">
+                  Add </button>
+          </div>
+      </div>
+  </div>
+</form>

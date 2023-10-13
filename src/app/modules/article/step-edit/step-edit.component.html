@@ -1,0 +1,165 @@
+<!-- <script src="https://cdn.tiny.cloud/1/azda8wyacmtzcpqxa9c6nq6yu7r22p4vweug5pevdfmw1wkp/tinymce/5/tinymce.min.js"
+  referrerpolicy="origin"></script>
+<section class="writer-section padset-top-md">
+  <div class="row">
+    <div class="col-md-6">
+        <h2 class=" top-md-marg padset-top-xs">Edit Article</h2>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group marg-top-md">
+          <button type="button" (click)="AddStep(stepForm)" class="btn-noborder marg-top-lg">
+            Add New Step</button>
+        </div>
+      </div>
+  </div>
+  <form [formGroup]="stepForm" (ngSubmit)="OnSubmit(stepForm)" class="full-width">
+    <div class="row">
+      <h2 class="bottom-md-marg"></h2>
+      <div class="col-md-12">
+        <input type="text" class="form-control full-width" formControlName="title" id="title" name="title">
+      </div>
+      <div class="col-md-12 top-md-marg">
+        <quill-editor class="cetered-box" formControlName="content" id="content" name="content"></quill-editor>
+      </div>
+    </div>
+    <div class="row top-xs-marg">
+       <div class="col-md-4">
+        <p class="top-xxs-marg fonts-bold">Episode {{pageNo + '/' + totalRowCount}}</p>
+      </div>
+      <div class="col-md-4"> -->
+<!-- <div class="centered-block">
+          <div class="marg-top-md">
+            <button type="button" [disabled]="!isPrevious" class="btn btn-light pull-left"
+              (click)="previousStep()">Previous</button>
+            <button type="button" [disabled]="!isNext" class="btn btn-light pull-right"
+              (click)="NextStep()">Next</button>
+          </div>
+        </div> -->
+<!-- </div> -->
+<!-- </div>
+    <div class="row top-md-marg button-set">
+      <div class="col-md-4">
+        <div class="form-group">
+          <button type="button" (click)="OnNext(stepForm)" class="button-bordered-blue button full-width">
+            Edit Step</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <button type="button" (click)="DraftArticle(stepForm)" class="button-bordered-blue button full-width">
+            Draft</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <button type="submit" class="button-bordered-blue button full-width">
+            Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <app-step-writer-layout [steps]="stepsForNav" [article]="articleForNav">
+  </app-step-writer-layout> -->
+<!-- <app-reader-layout [steps]="stepsForNav" [article]="articleForNav">
+    </app-reader-layout> -->
+
+<!-- </section> -->
+
+<link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+<link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet" />
+
+<link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet" />
+<section class="agency blog-sec blog-sidebar single_blog_item">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 order-lg-2">
+        <div class="blog-block">
+          <div class="blog-box"></div>
+        </div>
+        <div class="blog-text m-t-20">
+          <form
+            [formGroup]="stepForm"
+            (ngSubmit)="OnSubmit(stepForm)"
+            class="full-width"
+          >
+            <div class="row">
+              <h2 class="bottom-md-marg"></h2>
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  placeholder="Enter Title"
+                  class="texbox-title form-control full-width"
+                  formControlName="title"
+                  id="title"
+                  name="title"
+                />
+              </div>
+              <div class="col-md-12 top-md-marg">
+                <quill-editor
+                  class="cetered-box"
+                  formControlName="content"
+                  id="content"
+                  name="content"
+                  [modules]="modules"
+                  [theme]="'snow'"
+                >
+                </quill-editor>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row top-xl-marg">
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+          <div class="buttons-container">
+            <div class="form-group margin-right-sm">
+              <button
+                type="button"
+                (click)="OnNext(stepForm)"
+                class="btn btn-default primary-btn info back-white"
+              >
+                Save Step
+              </button>
+            </div>
+            <div class="form-group margin-right-sm">
+              <button
+                type="button"
+                (click)="DraftArticle(stepForm)"
+                class="btn btn-default primary-btn info back-white"
+              >
+                Draft Article
+              </button>
+            </div>
+            <div class="form-group margin-right-sm">
+              <button
+                type="submit"
+                class="btn btn-default primary-btn info back-white"
+                (click)="OnSubmit(stepForm)"
+              >
+                Publish Article
+              </button>
+            </div>
+            <div class="form-group margin-right-sm">
+              <button
+                type="submit"
+                class="btn btn-default primary-btn info back-white"
+                (click)="AddStep(stepForm)"
+              >
+                Add Step
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Comment Sec Start -->
+      </div>
+      <div class="col-lg-3">
+        <app-writer-sidebar
+          [steps]="stepsForNav"
+          [article]="articleForNav"
+        ></app-writer-sidebar>
+      </div>
+    </div>
+  </div>
+</section>

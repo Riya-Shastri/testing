@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row padset-bottom-md padset-top-md">
+      <div class="col-md-3">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link btn-light cancel-border-radius">Add Reference</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <table class="table" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Reference ID</th>
+          <th>Reference Type</th>
+          <th>Reference Value</th>
+          <th>Is Active</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reference of systemReferences">
+          <td>{{ reference.id }}</td>
+          <td>{{ reference.referenceType }}</td>
+          <td>{{ reference.referenceValue }}</td>
+          <td>{{ reference.isActive }}</td>
+          <td>
+            <button class="btn btn-custom-one">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-12">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

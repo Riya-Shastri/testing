@@ -1,0 +1,145 @@
+<section class="agency blog blog-sec" *ngIf="articleType == 1">
+  <div class="container no-side">
+    <div class="row full-width">
+      <div class="input-group custom-search-form">
+        <form
+          autocomplete="off"
+          novalidate
+          [formGroup]="searchForm"
+          (ngSubmit)="submitSearchForm()"
+          class="full-width search-form-article"
+        >
+          <div class="col-md-12 top-md-marg">
+            <div class="row padding-sides-xs">
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control form-control-lg book-search-control"
+                  (keyup)="onChangeSearch($event)"
+                  (inputFocused)="onFocused($event)"
+                  formControlName="queryString"
+                  (selected)="selectEvent($event)"
+                  placeholder="Search Books"
+                />
+                <!-- <div class="ng-autocomplete form-control-lg">
+                    <ng-autocomplete [data]="items" height="40px" [searchKeyword]="keyword" (selected)='selectEvent($event)' placeholder="Search Books"
+                      (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' formControlName="queryString" >
+                    </ng-autocomplete>
+                  </div> -->
+              </div>
+              <div class="col-md-3">
+                <select
+                  name="category"
+                  id="category"
+                  class="form-control full-button-blue form-control form-control-lg"
+                  formControlName="category"
+                  required
+                  placeholder="Category"
+                  [(ngModel)]="categoryId"
+                  (change)="onCategoryChange($event.target.value)"
+                >
+                  <option value="0" ng-selected="categoryId == null">
+                    Select Category
+                  </option>
+                  <option
+                    *ngFor="let category of categories"
+                    [value]="category.id"
+                    (click)="onCategoryChange(category.id)"
+                    type="number"
+                    ng-selected="!categoryId && categoryId == category.id"
+                  >
+                    {{ category.description }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select
+                  name="subcategory"
+                  id="subcategory"
+                  class="form-control full-button-blue form-control form-control-lg"
+                  formControlName="subcategoryId"
+                  required
+                  aria-placeholder="Select Sub Category"
+                  [(ngModel)]="subCategoryId"
+                  (change)="onSubCategoryChange($event.target.value)"
+                  formControlName="subCategory"
+                >
+                  <option value="0" ng-selected="categoryId == null">
+                    Select Sub Category
+                  </option>
+                  <option
+                    *ngFor="let subcategory of subCategories"
+                    [value]="subcategory.id"
+                    type="number"
+                  >
+                    {{ subcategory.description }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button
+                  (click)="Search()"
+                  class="btn primary-btn btn-default radius-0 pull-right full-width"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row right-pading-md">
+      <div
+        class="col-xl-4 col-md-6 animate__animated animate__fadeInUp"
+        *ngFor="let articleG of articles; let i = index"
+        [attr.data-index]="i"
+      >
+        <div class="blog-agency">
+          <div class="blog-contain">
+            <img src="{{ articleG.frontPage }}" alt="" class="img-fluid" />
+            <div class="img-container center-content">
+              <div class="center-content">
+                <div class="blog-info">
+                  <div class="m-b-20">
+                    <div class="center-text">
+                      <span class="material-icons color-grey"> schedule </span
+                      >&nbsp;
+                      <h6 class="m-r-25 font-blog full-width">
+                        {{ articleG.createdDate | date : "short" }}
+                        <span
+                          class="category-label pull-right"
+                          [style.background-color]="articleG.subCategoryColor"
+                          >{{ articleG.subCategoryDescription }}</span
+                        >
+                      </h6>
+                      <h6 class="font-blog">{{ articleG.type }}</h6>
+                    </div>
+                  </div>
+                  <h5 class="blog-head font-600">{{ articleG.title }}</h5>
+                  <p class="para2">{{ articleG.description }}</p>
+                  <div class="btn-bottom m-t-20 details-blog-desc">
+                    <a
+                      *ngIf="articleG.articleType === 1"
+                      class="btn btn-default primary-btn pull-right"
+                      [routerLink]="['/article-view/reader/articleReader/', articleG.articleCode]"
+                    >
+                      Read
+                    </a>
+                    <a
+                      *ngIf="articleG.articleType === 2"
+                      class="btn btn-default primary-btn pull-right"
+                      [routerLink]="['/article-info/',  articleG.articleCode]"
+                    >
+                      Read
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,136 @@
+<section class="agency blog blog-sec blog-sidebar sider">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <ngx-masonry
+          [options]="myOptions"
+          class="masonry-grid"
+          class="m-layout"
+        >
+          <div class="col-6 top-md-marg" *ngIf="isLoading">
+            <div class="blog-card-loading">
+              <div class="meta">
+                <div class="description"></div>
+              </div>
+            </div>
+          </div>
+          <div
+            ngxMasonryItem
+            class="m-width m-2-col animate__animated animate__fadeInUp padset-bottom-xs"
+            *ngFor="let blog of articles"
+          >
+            <div class="blog-agency">
+              <div class="blog-contain">
+                <img [src]="blog.frontPage" alt="" class="img-fluid" />
+                <div class="img-container">
+                  <div class="blog-info bottom-0">
+                    <div class="d-flex m-b-20">
+                      <div class="d-flex center-text full-width">
+                        <span class="material-icons color-grey"> schedule </span
+                        >&nbsp;
+                        <h6 class="m-r-25 font-blog full-width">
+                          {{ blog.createdDate | date: "short"
+                          }}<span
+                            class="category-label pull-right"
+                            [style.background-color]="blog.subCategoryColor"
+                            >{{ blog.subCategoryDescription }}</span
+                          >
+                        </h6>
+                      </div>
+                      <div class="d-flex center-text">
+                        <h6 class="font-blog">{{ blog.subcategory }}</h6>
+                      </div>
+                    </div>
+                    <h5 class="blog-head font-600">{{ blog.title }}</h5>
+                    <p class="para2">{{ blog.description }}</p>
+                    <div class="btn-bottom m-t-2 details-blog-desc">
+                      <a
+                        *ngIf="blog.articleType === 1"
+                        class="btn btn-default primary-btn pull-right"
+                        [routerLink]="['/article-view/reader/articleReader/' , blog.articleCode]"
+                      >
+                        Read
+                      </a>
+                      <a
+                        *ngIf="blog.articleType === 2"
+                        class="btn btn-default primary-btn pull-right"
+                        [routerLink]="['/article-info/' , blog.articleCode ]"
+                      >
+                        Read
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-masonry>
+      </div>
+      <div class="col-lg-3">
+        <app-homesidebar></app-homesidebar>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="firsttime-login" *ngIf="isFirstTimeLogin">
+  <div class="fullscreen">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12" *ngIf="subsCollection.length < 10">
+            <div class="heading-bar">
+              <h2>
+                Choose {{ 10 - subsCollection.length }} Categories to Follow
+              </h2>
+            </div>
+          </div>
+          <div class="col-md-12" *ngIf="subsCollection.length == 10">
+            <div class="heading-bar">
+              <h2 class="heading-show">
+                <a
+                  class="btn primary-btn btn-default radius-0 next-button"
+                  (click)="SaveSubs()"
+                  >Continue</a
+                >
+              </h2>
+            </div>
+          </div>
+          <!--Gallery start-->
+          <div class="category-container" *ngFor="let cat of categories">
+            <div class="category-title">
+              <h3 class="title">{{ cat.title }}</h3>
+            </div>
+            <div
+              class="my-app-custom-image-with-desc p-width col-md-2"
+              *ngFor="let img of cat.children"
+            >
+              <div
+                class="card added"
+                aria-disabled="true"
+                style="width: 18rem"
+                *ngIf="ifExisitInSubs(img.id)"
+                (click)="removeFromSubs(img.id)"
+              >
+                <div class="card-body">
+                  <h4 class="text-center">{{ img.title }}</h4>
+                </div>
+              </div>
+              <div
+                class="card"
+                style="width: 18rem"
+                *ngIf="!ifExisitInSubs(img.id)"
+                (click)="addToSubs(img.id)"
+              >
+                <div class="card-body">
+                  <h4 class="text-center">{{ img.title }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Gallery end-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<div class="row" *ngIf="isLoggedIn">
+  <div class="col-md-12">
+
+    <form [formGroup]="commentForm" (ngSubmit)="OnSubmit(commentForm)"
+      class="full-width middle-form-bordered cancel-border-radius">
+      <div class="col-md-12">
+        <p>Add a comment</p>
+        <textarea class="form-control padset-bottom-md bottom-md-marg" formControlName="comment" required
+          placeholder="Add what you think about this book"></textarea>
+        <button type="submit" class="btn btn-custom-one pull-right padset-top-md">Add Comment</button>
+      </div>
+    </form>
+  </div>
+
+
+</div>
+<div class="padset-md">
+  <h3>Comments ({{comments?.length}})</h3>
+  <div class="row">
+    <div class="col-md-12 top-md-marg" *ngFor="let comment of comments">
+      <div class="comment-box bottom-sm-marg common-shadow">
+        <div class="row">
+          <div class="col-sm-12 padset-xs">
+            <div class="user-name-box box-bordered-grey">
+              <div class="user-icon pull-left"><img class="full-width img-responsive user-icon pull-left"
+                  src="{{comment.profileImage}}">
+              </div>
+              <p class="bold-md-font cancel-bottom">{{comment?.firstName}}&nbsp;{{comment?.lastName}}<br />
+              </p>
+              <span class="fonts-sm top-xsm-marg">{{comment?.createdDate | date:'medium'}}</span>
+            </div>
+            <p class="padset-xs cancel-bottom">
+              {{comment?.content}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

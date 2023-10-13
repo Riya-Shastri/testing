@@ -1,0 +1,27 @@
+
+@media only screen and (max-width: 980px) {
+    header.ecommerce .responsive-btn i{
+        color:#fff !important;
+    }
+    
+    #togglebtn{
+        background-color: rgba(2, 1, 1, 0.712);
+    }
+    
+    .responsive-btn h5,.fa-bars{
+        color:#fff !important
+    }
+
+    ._nghost-lmj-c5{
+        position:absolute !important;
+        right:10px;
+    }
+  }
+
+  .fa-bars{
+    color:#fff !important;
+  }
+
+  .hotizontal-split{
+    margin-top: 10px;
+  }

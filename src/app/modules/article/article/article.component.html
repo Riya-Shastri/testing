@@ -1,0 +1,410 @@
+<!-- Article basic info section -->
+<section class="login-page section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>Basic Information</h3>
+        <div class="theme-card">
+          <form
+            class="theme-form row"
+            [formGroup]="articleForm"
+            (ngSubmit)="OnSubmit(articleForm)"
+          >
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="username">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngClass]="{
+                    'error-alert-input':
+                      articleForm.controls['title'].hasError('required') &&
+                      hasClicked,
+                    '':
+                      articleForm.controls['articleType'].hasError(
+                        'required'
+                      ) && !hasClicked
+                  }"
+                  formControlName="title"
+                  required
+                  placeholder="Title"
+                />
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.title.touched || submitted) &&
+                    articleFormControl.title.errors?.required
+                  "
+                >
+                  Title is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="input-label">Description</label>
+                <textarea
+                  type="textarea"
+                  rows="8"
+                  [ngClass]="{
+                    'error-alert-input':
+                      articleForm.controls['description'].hasError(
+                        'required'
+                      ) && hasClicked,
+                    '':
+                      articleForm.controls['articleType'].hasError(
+                        'required'
+                      ) && !hasClicked
+                  }"
+                  class="form-control"
+                  formControlName="description"
+                  required
+                  placeholder="description"
+                ></textarea>
+
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.description.touched || submitted) &&
+                    articleFormControl.description.errors?.required
+                  "
+                >
+                  Description is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="input-label">Category</label>
+                <select
+                  name="category"
+                  id="category"
+                  class="form-control full-button-blue ng-dirty ng-valid ng-touched"
+                  formControlName="category"
+                  required
+                  placeholder="Category"
+                  (change)="onCategoryChange($event.target.value)"
+                >
+                  <!-- <option value="" disabled selected hidden>Choose Category</option> -->
+                  <option
+                    *ngFor="let category of categories"
+                    [value]="category.id"
+                    (click)="onCategoryChange(category.id)"
+                    type="number"
+                  >
+                    {{ category.description }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.category.touched || submitted) &&
+                    articleFormControl.category.errors?.required
+                  "
+                >
+                  Category is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="input-label">Sub Category</label>
+                <select
+                  name="subcategory"
+                  id="subcategory"
+                  [ngClass]="{
+                    'error-alert-input':
+                      articleForm.controls['subcategory'].hasError(
+                        'required'
+                      ) && hasClicked,
+                    '':
+                      articleForm.controls['articleType'].hasError(
+                        'required'
+                      ) && !hasClicked
+                  }"
+                  class="form-control full-button-blue ng-dirty ng-valid ng-touched"
+                  formControlName="subcategory"
+                  required
+                  aria-placeholder="Select Sub Category"
+                  (change)="onSubCategoryChange($event.target.value)"
+                >
+                  <!-- <option value="" disabled selected hidden>Choose Sub Category</option> -->
+                  <option
+                    *ngFor="let subcategory of subCategories"
+                    [value]="subcategory.id"
+                    type="number"
+                  >
+                    {{ subcategory.description }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.subcategory.touched || submitted) &&
+                    articleFormControl.subcategory.errors?.required
+                  "
+                >
+                  Sub Category is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="input-label">Article Type</label>
+                <select
+                  name="articleType"
+                  id="articleType"
+                  [ngClass]="{
+                    'error-alert-input':
+                      articleForm.controls['articleType'].hasError(
+                        'required'
+                      ) && hasClicked,
+                    '':
+                      articleForm.controls['articleType'].hasError(
+                        'required'
+                      ) && !hasClicked
+                  }"
+                  class="form-control full-button-blue ng-dirty ng-valid ng-touched"
+                  formControlName="articleType"
+                  required
+                  placeholder="Alert Type"
+                  (change)="onArticleTypeChange($event.target.value)"
+                >
+                  <option value="" disabled selected hidden>Choose Type</option>
+                  <option [value]="1">Article</option>
+                  <option [value]="2">Book</option>
+                </select>
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.articleType.touched || submitted) &&
+                    articleFormControl.articleType.errors?.required
+                  "
+                >
+                  Article Type is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="input-label">Language</label>
+                <select
+                  name="articleEarnType"
+                  id="articleEarnType"
+                  class="full-button-blue form-control ng-dirty ng-valid ng-touched"
+                  formControlName="languageId"
+                >
+                  <option value="" disabled selected hidden>
+                    Choose language
+                  </option>
+                  <option *ngFor="let lan of languages" [value]="lan.id">
+                    {{ lan.name }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.languageId.touched || submitted) &&
+                    articleFormControl.languageId.errors?.required
+                  "
+                >
+                  Language is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="input-label">Monetization Type</label>
+                <select
+                  name="articleEarnType"
+                  id="articleEarnType"
+                  class="full-button-blue form-control ng-dirty ng-valid ng-touched"
+                  formControlName="articleEarnType"
+                  (change)="onArticleEarnTypeChange($event.target.value)"
+                >
+                  <option value="" disabled selected hidden>Choose Type</option>
+                  <option
+                    *ngFor="let earn of articleEarnTypes"
+                    [value]="earn.id"
+                  >
+                    {{ earn.value }}
+                  </option>
+                </select>
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.articleEarnType.touched || submitted) &&
+                    articleFormControl.articleEarnType.errors?.required
+                  "
+                >
+                  Monetization Type is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6" *ngIf="selectedArticleEarnType == 3">
+              <div class="form-group">
+                <label class="input-label">Minimum Price</label>
+                <input
+                  type="text"
+                  class="form-control ng-dirty ng-valid ng-touched"
+                  formControlName="minPrice"
+                  placeholder="Minimum Price"
+                />
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.minPrice.touched || submitted) &&
+                    articleFormControl.minPrice.errors?.required
+                  "
+                >
+                  Minimum Price is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6" *ngIf="selectedArticleEarnType == 3">
+              <div class="form-group">
+                <label class="input-label">Maximum Price</label>
+                <input
+                  type="text"
+                  class="form-control ng-dirty ng-valid ng-touched"
+                  formControlName="maxPrice"
+                  placeholder="Maximum Price"
+                />
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.maxPrice.touched || submitted) &&
+                    articleFormControl.maxPrice.errors?.required
+                  "
+                >
+                  Maximum Price is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  (click)="onArticleSeriesCheck($event.target)"
+                  value=""
+                  id="seriesCode"
+                />
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                  Do this article a part of article series?
+                </label>
+                <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.maxPrice.touched || submitted) &&
+                    articleFormControl.maxPrice.errors?.required
+                  "
+                >
+                  Maximum Price is required
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group" *ngIf="isCheckedSeries">
+                <label class="input-label full-width"
+                  >Article Series&nbsp;&nbsp;
+                  <span
+                    class="btn-link pull-right"
+                    (click)="createArticleSeries()"
+                    >Create New</span
+                  ></label
+                >
+                <select
+                  name="seriesCode"
+                  id="seriesCode"
+                  [ngClass]="{
+                    'error-alert-input':
+                      articleForm.controls['subcategory'].hasError(
+                        'required'
+                      ) && hasClicked,
+                    '':
+                      articleForm.controls['articleType'].hasError(
+                        'required'
+                      ) && !hasClicked
+                  }"
+                  class="form-control full-button-blue ng-dirty ng-valid ng-touched"
+                  formControlName="seriesCode"
+                  required
+                  aria-placeholder="Select Sub Category"
+                  (change)="onSubCategoryChange($event.target.value)"
+                >
+                  <!-- <option value="" disabled selected hidden>Choose Sub Category</option> -->
+                  <option
+                    *ngFor="let articleS of articleSeries"
+                    [value]="articleS.seriesCode"
+                    type="number"
+                  >
+                    {{ articleS.seriesTitle }}
+                  </option>
+                  <option (click)="(createSeries)">Create Series</option>
+                </select>
+                <!-- <span
+                  class="text-danger margin-sm-top"
+                  *ngIf="
+                    (articleFormControl.subcategory.touched || submitted) &&
+                    articleFormControl.subcategory.errors?.required
+                  "
+                >
+                  Sub Category is required
+                </span> -->
+              </div>
+            </div>
+          </form>
+          <div class="row" *ngIf="selectedArticleEarnType == 1">
+            <div class="col-md-12">
+              <p>
+                Free read articles are free for any user or anonymous users.
+                Those will take you to high reach and articles written well make
+                you higher in reads. more than 1000 reads for an article allow
+                you to monetize the article for Ad revenue. For more
+                information, please read terms and conditions.
+              </p>
+            </div>
+          </div>
+          <div class="row" *ngIf="selectedArticleEarnType == 3">
+            <div class="col-md-12">
+              <p>
+                You can assign min and max values for an articles. Customer will
+                decide what is the amount for tha article/book. High quality and
+                well written articles may get high demand and high payments.
+              </p>
+            </div>
+          </div>
+          <div class="row" *ngIf="selectedArticleEarnType == 2">
+            <div class="col-md-12">
+              <p>
+                You can monetize the article only if you are a standard user or
+                above. Please sibscribe for monetization.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="com-md-6 button-container">
+              <p
+                class="btn primary-btn btn-default radius-0 pull-right"
+                [disabled]="articleForm.invalid"
+                (click)="OnSubmit(articleForm)"
+              >
+                Next
+              </p>
+              &nbsp;
+              <p
+                class="btn primary-btn btn-default radius-0 pull-right"
+                [disabled]="articleForm.invalid"
+                (click)="(onCancel)"
+              >
+                Canel
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

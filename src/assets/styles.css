@@ -1,0 +1,21 @@
+.sidebar-list .nav-link span{
+    display: flex !important;
+}
+
+.sidebar-list .nav-link span span{
+    margin-top: -2px !important;
+}
+.sidebar-list li .nav-link b{
+    display: flex !important;
+}
+.article-controls .edit-button,.article-controls span a{
+    margin-right:10px;
+}
+
+.article-controls{
+    padding:5px;
+}
+
+.blog-title .blog-sidebar .blog-title:before{
+    left:0 !important; 
+}

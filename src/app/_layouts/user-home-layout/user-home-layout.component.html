@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <app-nav></app-nav>
+
+  <body>
+    <section class="margin-common-top article-list">
+      <div class="backgroun-cover">
+        <div
+          class="row cancel-padding bottom-border-lg-grey"
+          min-height="200px"
+        >
+          <!-- <div class="col-md-4 backgroun-cover background-white left-background"
+                    [style.background-image]="'url('+backgroundurl+')'" height="100%">
+                </div> -->
+          <div class="col-md-8 background-white">
+            <div class="row">
+              <div
+                class="blog-card-modern card-modernui col-md-4"
+                *ngFor="let articleG of lastReadArticles; let i = index"
+                [attr.data-index]="i"
+              >
+                <div
+                  class="wrapper common-shadow"
+                  [style.background-image]="'url(' + articleG.frontPage + ')'"
+                >
+                  <div class="date">
+                    <span class="day">{{
+                      articleG.createdDate | date : "dd"
+                    }}</span>
+                    <span class="month">{{
+                      articleG.createdDate | date : "MMM"
+                    }}</span>
+                    <span class="year">{{
+                      articleG.createdDate | date : "yyyy"
+                    }}</span>
+                  </div>
+                  <div class="data">
+                    <div class="content">
+                      <h1 class="title">
+                        <a
+                          *ngIf="articleG.articleType === 1"
+                          [routerLink]="['/article-view/reader/articleReader/',articleG.articleCode]"
+                        >
+                          {{ articleG.title }}
+                        </a>
+                        <a
+                          *ngIf="articleG.articleType === 2"
+                          [routerLink]="['/article-info/',articleG.articleCode ]"
+                        >
+                          {{ articleG.title }}
+                        </a>
+                      </h1>
+                      <p class="text">{{ articleG.description }}</p>
+                      <label for="show-menu" class="menu-button"
+                        ><span></span
+                      ></label>
+                    </div>
+                    <input type="checkbox" id="show-menu" />
+                    <ul class="menu-content">
+                      <li>
+                        <a href="#" class="fa fa-bookmark-o"></a>
+                      </li>
+                      <li>
+                        <a href="#" class="fa fa-heart-o"><span>47</span></a>
+                      </li>
+                      <li>
+                        <a href="#" class="fa fa-comment-o"><span>8</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper common-shadow">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- <div class="col-md-4" *ngFor="let article of lastReadArticles">
+                                <div _ngcontent-rvd-c3="" class="blog-card common-shadow">
+                                    <div _ngcontent-rvd-c3="" class="meta">
+                                        <div _ngcontent-rvd-c3="" class="photo"
+                                        [style.background-image]="'url('+article.frontPage+')'">
+                                        </div>
+                                        <ul _ngcontent-rvd-c3="" class="details">
+                                            <li _ngcontent-rvd-c3="" class="date">Saturday, August 14, 2021</li>
+                                            <li _ngcontent-rvd-c3="" class="tags">
+                                                <ul _ngcontent-rvd-c3="">
+                                                    <li _ngcontent-rvd-c3=""><a _ngcontent-rvd-c3="" href="#">Learn</a></li>
+                                                    <li _ngcontent-rvd-c3=""><a _ngcontent-rvd-c3="" href="#">Code</a></li>
+                                                    <li _ngcontent-rvd-c3=""><a _ngcontent-rvd-c3="" href="#">HTML</a></li>
+                                                    <li _ngcontent-rvd-c3=""><a _ngcontent-rvd-c3="" href="#">CSS</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div _ngcontent-rvd-c3="" class="description">
+                                        <h1 _ngcontent-rvd-c3="">{{article.title}}</h1>
+                                        <h2 _ngcontent-rvd-c3=""></h2>
+                                        <p _ngcontent-rvd-c3="" class="desc-text">{{article.description}}</p>
+                                        <p _ngcontent-rvd-c3="" class="read-more"><a routerLink="/article-view/reader/articleReader/{{article.articleCode}}">Read
+                                                More</a></p>
+                                    </div>
+                                </div>
+                            </div> -->

@@ -1,0 +1,11 @@
+.ql-container.ql-snow {
+     border: 0px solid !important; 
+}
+
+
+.comment_sec .blog-user{
+     padding: 5px !important;
+     border: 1px solid #ddd !important;
+     border-radius: 10px !important;
+     box-shadow: -1px 6px 5px -3px rgba(0,0,0,0.24)
+   }

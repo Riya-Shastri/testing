@@ -1,0 +1,91 @@
+<!-- <section class=" login-background">
+  
+    <div class="row">
+      <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card-two centered-box login-box background shadow-background">
+        <div class="row">
+          <div class="col-md-12">
+            <div class=" centered-block padset-bottom-xs padset-top-xs">
+              <div class="logo-box padset-bottom-xs full-width">
+                <img src="../../assets/images/Logo.png" width="100px" class="google-logo logo-medium centered-block"/>
+
+              </div>
+            </div>
+          </div>
+        </div>
+          <form [formGroup]="userAddForm" (ngSubmit)="userAdd(userAddForm)">
+            <div class="form-group">
+              <p>Username</p>
+              <input type="text" class="form-control" formControlName="username" required placeholder="Username">
+            </div>
+            <div class="form-group">
+                <p>Password</p>
+              <input type="password" class="form-control" formControlName="password" required placeholder="Password">
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-light full-width bottom-xs-marg" type="submit" [disabled]="userAddForm.invalid">Sign Up</button>
+                </div>
+                <div class="col-md-12">
+                  <p class="custom-link">or <a [routerLink]="['/register']">Register</a></p>
+                </div>
+              </div>
+              
+            </div>
+          </form>
+          
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+    
+    </section> -->
+<section class="login-page section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Login</h3>
+        <div class="theme-card">
+          <form class="theme-form" [formGroup]="userAddForm" (ngSubmit)="userAdd(userAddForm)">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" formControlName="username" autocomplete="off" id="username"
+                placeholder="Username or Email" required="">
+            </div>
+            <div class="form-group">
+              <label for="review">Password</label>
+              <input type="password" 
+                class="form-control" formControlName="password" autocomplete="off" id="review"
+                placeholder="Enter your password" required="true"><span class="error-label"
+                *ngIf="userAddForm.invalid">Select a password with Numeric, Capital leters and simple letters</span>
+            </div>
+            <button class="btn primary-btn btn-default radius-0" [disabled]="userAddForm.invalid" type="submit">Sign
+              Up</button>&nbsp;
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-6">
+
+        <h3>&nbsp;</h3>
+        <div class="theme-card">
+
+          <div class="row">
+            <div class="col-md-3"><img src="/assets/images/Logo.png" class="img-responsive" width="100px"></div>
+            <div class="col-md-9">
+
+              <p>Welcome to Linfolk. You are a new customer. please select a Unique username and password with Numeric,
+                Capital leters and simple letters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
+</section>

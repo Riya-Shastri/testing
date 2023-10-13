@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<app-nav></app-nav>
+
+<body>
+    
+<!-- Theme included stylesheets -->
+<link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
+
+<link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">
+
+    <nav class="col-md-2 d-none d-md-block sidebar custom-scroll-one color-black">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+
+                <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>{{article?.title}}</span>
+                </h5>
+                <li class="nav-item" *ngFor="let step of (steps || []); let i = index">
+                    <a class="nav-link" href="{{this.href}}#{{step.id}}">
+                        <b  *ngIf="step.id === this.selectedStepId " (click)="emitSelectedId(i+1)">
+                            {{step.title}}
+                        </b>
+                        <span *ngIf="step.id != this.selectedStepId " (click)="emitSelectedId(i+1)">
+                            {{step.title}}
+                        </span>
+                    </a>
+                </li>
+                <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Bookmarks</span>
+                </h5>
+                <li class="nav-item" *ngFor="let step of (steps || [])">
+                    <div *ngFor="let bookmark of (step.highlights || [])">
+                        <a class="nav-link" href="{{this.href}}#{{step.id}}">
+                            {{bookmark.highlightedPart}}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+
+                </li>
+                <li class="nav-item">
+
+                </li>
+                <li class="nav-item">
+
+                </li>
+                <li class="nav-item">
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="margin-common-top">
+        <div class="wrapper-reader">
+            <router-outlet></router-outlet>
+        </div>
+    </section>
+    <nav class="col-md-2 d-none d-md-block sidebar-right custom-scroll-one color-black">
+
+        <div class="sidebar-sticky">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <!--user card-->
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+
+<div class="blog-side">
+    <div>
+        <div class="sidebar-container borders">
+            <h5 class="blog-title">{{article?.title}}</h5>
+            <ul class="sidebar-list"> 
+                <li class="d-flex"  *ngFor="let step of (steps || []); let i = index">
+                      <a href="{{this.href}}#{{step.id}}"  (click)="emitSelectedId(i+1)">
+                            {{step.title}}
+                    </a>
+                </li>
+              </ul>
+        </div>
+    </div>
+    </div>

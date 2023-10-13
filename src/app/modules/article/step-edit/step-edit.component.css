@@ -1,0 +1,9 @@
+.buttons-container{
+    display: flex !important;
+    margin-top:70px;
+    padding-left: 15px;
+}
+.texbox-title{
+    border:0px solid !important;
+
+}

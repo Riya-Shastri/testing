@@ -1,0 +1,137 @@
+<!-- <section class="register-background">
+  <div class="row">
+    <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card-two centered-box register-box shadow-background">
+      <div class="row">
+        <div class="col-md-12">
+          <div class=" centered-block padset-bottom-xs padset-top-xs">
+            <div class="logo-box padset-bottom-xs full-width">
+              <img src="../../assets/images/Logo.png" class="google-logo logo-medium centered-block"/>
+            </div>
+            <p class="text-center">Welcome to Linkolk, get start with your fantastic journey with imagination!</p>
+          </div>
+        </div>
+      </div>
+        <form [formGroup]="registerForm" (ngSubmit)="OnSubmit(registerForm)">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <p>First Name</p>
+                      <input type="text" class="form-control" formControlName="firstname" required placeholder="First Name">
+                    </div>
+              </div>
+          </div>
+            <div class="row">
+             
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <p>Last Name</p>
+                        <input type="text" class="form-control" formControlName="lastname" required placeholder="LastName">
+                      </div>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p>Username</p>
+                    <input type="text" class="form-control" formControlName="username" required placeholder="Username">
+                  </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p>Password</p>
+                    <input type="password" class="form-control" formControlName="password" required placeholder="Password">
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                  <p>Email Address</p>
+                  <input type="email" class="form-control" formControlName="email" required placeholder="Email Address">
+                </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <p>Profession</p>
+                  <input type="text" class="form-control" formControlName="job" required placeholder="Job">
+                </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <button class="button-bordered-blue button full-width bottom-xs-marg" type="submit" [disabled]="registerForm.invalid">Register</button>
+            </div>
+            <div class="col-md-12">
+           
+              <button (click)="socialSignIn('google')" type="button" class="button-bordered-blue button full-width  full-width">
+                <img src="../../assets/images/google.png" class="google-logo logo-small"/> Google
+              </button>
+            </div>
+            <div class="col-md-12">
+              <p class="custom-link">or <a [routerLink]="['/login']">login</a></p>
+            </div>
+          </div>
+          
+        </div>
+        </form>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+  </div>
+  
+</section> -->
+
+
+<!-- register section -->
+
+<section class="register-page section-b-space">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <h3>create account</h3>
+              <div class="theme-card">
+                  <form class="theme-form" [formGroup]="registerForm" (ngSubmit)="OnSubmit(registerForm)">
+                    <div class="form-row">
+                      <div class="col-md-6">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" id="username"  formControlName="username"  placeholder="Username" required="">
+                      </div>
+                      <div class="col-md-6">
+                          <label for="review">Password</label>
+                          <input type="password" class="form-control" formControlName="password" id="review"
+                                 placeholder="Enter your password" required="">
+                      </div>
+                    </div>
+                      <div class="form-row">
+                          <div class="col-md-6">
+                              <label for="email">First Name</label>
+                              <input type="text" class="form-control" id="fname" formControlName="firstname"  placeholder="First Name" required="">
+                          </div>
+                          <div class="col-md-6">
+                              <label for="review">Last Name</label>
+                              <input type="text" class="form-control" id="lname" formControlName="lastname"  placeholder="Last Name"
+                                     required="">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="col-md-6">
+                              <label for="email">email</label>
+                              <input type="text" class="form-control" id="email"  formControlName="email"  placeholder="Email" required="">
+                          </div>
+                          <div class="col-md-6">
+                              <label for="job">Title</label>
+                              <input type="text" class="form-control"  formControlName="job" id="job"
+                                     placeholder="Ex. Author" required="">
+                          </div>
+                          <a href="#" class="btn btn-default primary-btn radius-0" (click)="OnSubmit(registerForm)">create Account</a>
+                        </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+

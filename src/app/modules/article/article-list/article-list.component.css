@@ -1,0 +1,57 @@
+/* .card-img {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  
+  .card-title {
+    margin-bottom: 0.3rem;
+  }
+  
+  .cat {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  
+  .fa-users {
+    margin-left: 1rem;
+  }
+  
+  .card-footer {
+    font-size: 0.8rem;
+  }
+
+  .btn-blue.active{
+    border: 1px solid #17a2b8 !important;
+  }
+
+  .card-img-overlay {
+    bottom: 20%;
+  }
+    .custom-search-form{
+      margin-top: 4px;
+    
+}
+
+.ng-pristine.ng-valid.ng-touched,.autocomplete-container .input-container input{
+  height: 40px !important;
+}
+
+.card-text-box{
+  height: 100px !important;
+  overflow: hidden;
+} */
+
+
+select,.form-control{
+  border: 1px solid #ddd;
+  height: 55px;
+  border-radius: 0px;
+}
+
+.right-pading-md{
+  padding-right: 30px;
+}
+
+.primary-btn.btn-default{
+  margin-bottom:20px;
+}

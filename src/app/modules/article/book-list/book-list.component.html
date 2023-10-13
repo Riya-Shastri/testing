@@ -1,0 +1,127 @@
+<section class="agency blog blog-sec" *ngIf="articleType == 2">
+  <div class="container no-side">
+    <div class="row full-width">
+      <div class="input-group custom-search-form">
+        <form
+          autocomplete="off"
+          novalidate
+          [formGroup]="searchForm"
+          (ngSubmit)="submitSearchForm()"
+          class="full-width search-form-article"
+        >
+          <div class="col-md-12 top-md-marg">
+            <div class="row padding-sides-xs">
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control form-control-lg book-search-control"
+                  (keyup)="onChangeSearch($event)"
+                  (inputFocused)="onFocused($event)"
+                  formControlName="queryString"
+                  (selected)="selectEvent($event)"
+                  placeholder="Search Books"
+                />
+              </div>
+              <div class="col-md-3">
+                <select
+                  name="category"
+                  id="category"
+                  class="form-control full-button-blue form-control form-control-lg"
+                  formControlName="category"
+                  required
+                  placeholder="Category"
+                  (change)="onCategoryChange($event.target.value)"
+                >
+                  <option value="0" selected>Select Category</option>
+                  <option
+                    *ngFor="let category of categories"
+                    [value]="category.id"
+                    (click)="onCategoryChange(category.id)"
+                    type="number"
+                  >
+                    {{ category.description }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select
+                  name="subcategory"
+                  id="subcategory"
+                  class="form-control full-button-blue form-control form-control-lg"
+                  formControlName="subcategoryId"
+                  required
+                  aria-placeholder="Select Sub Category"
+                  (change)="onSubCategoryChange($event.target.value)"
+                  formControlName="subCategory"
+                >
+                  <option value="0" selected>Select Sub Category</option>
+                  <option
+                    *ngFor="let subcategory of subCategories"
+                    [value]="subcategory.id"
+                    type="number"
+                  >
+                    {{ subcategory.description }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-xl-4 col-md-6 animate__animated animate__fadeInUp"
+        *ngFor="let articleG of articles; let i = index"
+        [attr.data-index]="i"
+      >
+        <a [routerLink]="['/article-info/' , articleG.articleCode]">
+          <div class="row">
+            <div class="col-xl-4 col-md-6">
+              <div class="blog-agency">
+                <div class="blog-contain">
+                  <img
+                    src="{{
+                      articleG.frontPage == null
+                        ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-fe1040a9952994208fcae6066ab78f2b_screen.jpg?ts=1636980773'
+                        : articleG.frontPage
+                    }}"
+                    alt=""
+                    class="img-fluid"
+                  />
+                  <div class="img-container center-content">
+                    <div class="center-content"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="blog-info">
+                <div class="m-b-20">
+                  <div class="center-text">
+                    <!-- <h6 class="small">
+                      {{ articleG.articleType == 1 ? "Article" : "Book" }}
+                    </h6> -->
+                  </div>
+                </div>
+                <div class="btn-bottom m-t-20">
+                  {{ articleG.title }}
+                </div>
+                <h5 class="blog-head font-600">
+                  {{ articleG.firstName + " " + articleG.lastName }}
+                </h5>
+                <h6 class="m-r-25 font-blog grey">
+                  {{ articleG.createdDate | date: medium }}
+                </h6>
+                <br />
+                <h6 class="m-r-25 font-blog grey fonts-bold">
+                  {{ articleG.minPrice | currency: "AUD" }}
+                </h6>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

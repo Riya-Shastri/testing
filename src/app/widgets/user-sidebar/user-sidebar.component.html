@@ -1,0 +1,170 @@
+<div class="blog-side">
+  <div>
+    <!-- <a *ngIf="isSameUser"  routerLink="/user/{{user?.id}}/settings/activities">Activities</a>
+        <a routerLink="/user/{{user?.id}}/settings/content/{{user?.id}}">Articles & Books</a>
+        <a  routerLink="/user/{{user?.id}}/settings/followers">Followers</a>
+        <a  routerLink="/user/{{user?.id}}/settings/followers">Following</a>
+        <a  *ngIf="isSameUser"  routerLink="/user/{{user?.id}}/settings/settings/{{user?.id}}">Settings</a>
+        <a  *ngIf="isSameUser"  routerLink="/user/{{user?.id}}/settings/general">History</a>
+        <a  *ngIf="isSameUser"  routerLink="/user/{{user?.id}}/settings/purchases/{{user?.id}}">Purchase History</a> -->
+    <div class="user-card">
+      <div class="user-image full-width">
+        <img src="{{ user?.profileImage }}" />
+        <span
+          class="material-icons photo-upload-btn"
+          (click)="openPhotoUploadModal()"
+        >
+          photo_camera
+        </span>
+      </div>
+      <h5 *ngIf="user" class="blog-title text-center">
+        {{ user?.firstName + " " + user?.lastName }}
+      </h5>
+      <h3 class="blog-title text-center">{{ user?.job }}</h3>
+      <div class="d-flex inline">
+        <button
+          (click)="followUser()"
+          class="inline btn primary-btn btn-default radius-0 full-width"
+        >
+          Follow
+        </button>
+        <button
+          (click)="rateUser()"
+          class="inline btn primary-btn btn-default radius-0 full-width"
+        >
+          Rate
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4">
+          <img
+            src="{{ user?.profileImage }}"
+            alt=""
+            width="100"
+            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+          />
+          <h5 class="mb-0">{{ user?.firstName + " " + user?.lastName }}</h5>
+          <span class="small text-uppercase text-muted">{{ user?.job }}</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-facebook-f"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-instagram"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-container borders">
+      <ul class="sidebar-list">
+        <li class="d-flex">
+          <a href="#" [routerLink]="['/user/' ,  user?.userName ,'/settings/general']">
+            <span class="material-icons color-grey"> timeline </span
+            >Activities</a
+          >
+        </li>
+        <li class="d-flex">
+          <a
+            href="#"
+            [routerLink]="['/user/' , user?.userName  , '/settings/content/', user?.userName]"
+          >
+            <span class="material-icons color-grey"> library_books </span
+            >Books</a
+          >
+        </li>
+        <li class="d-flex">
+          <a href="#">
+            <span class="material-icons color-grey"> article </span>
+            Articles</a
+          >
+        </li>
+        <li class="d-flex">
+          <a
+            href="#"
+            [routerLink]="['/user', user?.userName , '/settings/followers']"
+          >
+            <span class="material-icons color-grey"> people </span>Followers</a
+          >
+        </li>
+        <li class="d-flex">
+          <a
+            href="#"
+            [routerLink]="['/user/' ,  user?.userName , '/settings/followers' ]"
+          >
+            <span class="material-icons color-grey"> people_outline </span
+            >Followings</a
+          >
+        </li>
+        <li class="d-flex">
+          <a
+            href="#"
+            [routerLink]="['/user/' ,  user?.userName , '/settings/settings/' , 
+              user?.userName] ">
+            <span class="material-icons color-grey"> settings </span>
+            Options</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h5 class="blog-title recent-blogs">Recent Readings</h5>
+    <div class="sidebar-container">
+      <div>
+        <div class="blog-agency" *ngFor="let article of lastReadArticles">
+          <div class="blog-contain">
+            <img src="{{ article.frontPage }}" alt="" class="img-fluid" />
+            <div class="img-container center-content">
+              <div class="center-content">
+                <div class="blog-info">
+                  <div class="m-b-20">
+                    <div class="center-text">
+                      <span class="material-icons color-grey"> schedule </span
+                      >&nbsp;
+                      <h6 class="m-r-25 font-blog">
+                        {{ article.createdDate | date : "short" }}
+                      </h6>
+                      <h6 class="font-blog">{{ article.type }}</h6>
+                    </div>
+                  </div>
+                  <div class="btn-bottom m-t-20">
+                    <h5>
+                      <a
+                        [routerLink]="['article-view/reader/articleReader' , article.articleCode]"
+                        >{{ article.title }}</a
+                      >
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="sidebar-container">
+          <h5 class="blog-title">newsletter</h5>
+          <div class="newsletter text-center form">
+              <div class="form-group"><input type="text" class="form-control" placeholder="enter email">
+                  <a href="#"> <i class="fa fa-paper-plane" aria-hidden="true"></i> </a></div>
+          </div>
+      </div> -->
+  <!-- <div>
+    <h5 class="blog-title">Ongoing Articles</h5>
+    <div class="sidebar-container insta"></div>
+  </div> -->
+</div>
